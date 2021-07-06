@@ -18,6 +18,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class CsvTool {
 
+  /**
+   * 取得路徑，並轉為List<Map<String,String>>，這邊Map<String,String>可以改成Object
+   * @param path 檔案路徑
+   * @return List<Map<String,String>>
+   */
   public List<Map<String,String>> getDataFromCSV(Path path){
     var keys = new ArrayList<String>();
     var result = new ArrayList<Map<String,String>>();
@@ -42,20 +47,24 @@ public class CsvTool {
     return result;
   }
 
-  public void outputCSV(Path outputPath,List<Map<String,String>> differentDate ,List<String> headers)
+  /**
+   *
+   * @param outputPath 輸出路徑
+   * @param data 輸出資料
+   * @param headers 標題
+   * @throws FileNotFoundException 查無此檔案
+   */
+  public void outputCSV(Path outputPath,List<Map<String,String>> data ,List<String> headers)
       throws FileNotFoundException {
     File csvOutputFile = outputPath.toFile();
     try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
-
       pw.println(String.join(",",headers));
-      differentDate.forEach(d -> {
+      data.forEach(d -> {
         var sb = new StringJoiner(",");
-        headers.forEach(header -> {
-          var data = Optional.ofNullable(d.get(header)).orElse("");
-          sb.add(data) ;
-        });
+        headers.forEach(header -> sb.add(Optional.ofNullable(d.get(header)).orElse("")));
         pw.println(sb.toString());
       });
+
       System.out.println("已成功生成csv檔案於"+ outputPath.toAbsolutePath().toString());
     }
   }
