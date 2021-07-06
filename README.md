@@ -9,23 +9,36 @@
 ## 預計功能
 ### 除Test外不依靠Spring
 -[x] csv reader/writer (7/6 Done)
+
 -[ ] excel reader/writer(use POI)
+
 -[ ] PDF writer(itextpdf)
+
 -[ ] QRcode (use [ZXing](https://github.com/zxing/zxing) )
 
 ### 依賴Spring、Mybatis、H2(ProgressSQL mode)、MongoDB
 -[ ] Swagger
+
 -[ ] document reader/writer
+
 -[ ] Address checker( JSON / MongoDB )
+
 -[ ] Google map API / OpenMap API
+
 -[ ] Cache
+
 -[ ] Spring boot Mails
+
 -[ ] WebSockets
+
 -[ ] Spring Security
 
 ### 待開新專案(micro services)
+
 -[ ] Spring cloud gateway
+
 -[ ] OpenFeign(with Trace)
+
 -[ ] gRPC(with Trace)
 
 ## 結語
