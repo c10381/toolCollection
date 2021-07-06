@@ -29,7 +29,7 @@
 -[ ] gRPC(with Trace)<br>
 
 ### Infra
--[] github action<br>
+-[x] github action<br>(7/6 Done)<br>
 
 
 ## 結語
