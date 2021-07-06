@@ -8,7 +8,7 @@
 
 ## 預計功能
 ### 除Test外不依靠Spring
--[ ] csv reader/writer (7/6 Done)
+-[x] csv reader/writer (7/6 Done)
 -[ ] excel reader/writer(use POI)
 -[ ] PDF writer(itextpdf)
 -[ ] QRcode (use [ZXing](https://github.com/zxing/zxing) )
