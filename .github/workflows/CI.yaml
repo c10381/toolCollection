@@ -1,7 +1,7 @@
-name: CI
+name: ci check
 on:
   push:
-    branches: [master,github-action]
+    branches: [master]
 jobs:
   build:
     runs-on: ubuntu-latest
