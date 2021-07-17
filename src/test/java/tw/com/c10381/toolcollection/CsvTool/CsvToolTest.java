@@ -1,7 +1,6 @@
 package tw.com.c10381.toolcollection.CsvTool;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.PATH;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -10,8 +9,10 @@ import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
+@ActiveProfiles("test")
 class CsvToolTest {
 
   @Autowired

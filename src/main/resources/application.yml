@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: @profile.active@
+# todo H2 support
+#    active: @profile.active@,@database.profile.active@
+  application:
+    name: dennis-tool-collection
