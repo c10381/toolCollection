@@ -9,11 +9,14 @@
 ## 預計功能
 ### 除Test外不依靠Spring
 -[x] csv reader/writer (7/6 Done)<br>
+-[x] Json tool -(7/20 Done)<br>
 -[ ] excel reader/writer(use POI)<br>
 -[ ] PDF writer(itextpdf)<br>
 -[ ] QRcode (use [ZXing](https://github.com/zxing/zxing) )<br>
 
 ### 依賴Spring、Mybatis、H2(ProgressSQL mode)、MongoDB
+-[x] Spring-boot profile with maven -(7/17 Done)<br>
+-[x] HttpClient -(7/20 Done)<br>
 -[ ] Swagger<br>
 -[ ] document reader/writer<br>
 -[ ] Address checker( JSON / MongoDB )<br>
@@ -29,7 +32,7 @@
 -[ ] gRPC(with Trace)<br>
 
 ### Infra
--[x] github action<br>(7/6 Done)<br>
+-[x] github action (7/6 Done)<br>
 
 
 ## 結語
