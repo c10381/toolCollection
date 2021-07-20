@@ -63,7 +63,7 @@ public class HttpClientTool {
       throws IOException, InterruptedException {
     var requestHeader = null != headers ? getHeaders(headers) : new String[]{};
     var requestParams = null != params ? params : Map.<String,Object>of();
-    var requestUrl = getUrlHasParams(url,requestParams);
+    var requestUrl = getQueryString(url,requestParams);
 
     var request = HttpRequest.newBuilder()
         .GET()
