@@ -69,7 +69,7 @@ public class JsonTool {
    */
   public String convertToJson(Object body) throws JSONException {
     if(null == body) { return ""; }
-    if(body instanceof List){ return new JSONArray(body).toString(); }
+    if(body instanceof List){ return new JSONArray((List<?>)body).toString(); }
 
     var bodyMap = Map.<String,Object>of();
     if(body instanceof Map){
