@@ -7,9 +7,9 @@
 寫一個自己爽的prototype，並要撰寫Test
 
 ## 預計功能
-### 除Test外不依靠Spring
 -[x] csv reader/writer (7/6 Done)<br>
 -[x] Json tool -(7/20 Done)<br>
+-[x] zip/unZip -(7/24 Done)<br>
 -[ ] excel reader/writer(use POI)<br>
 -[ ] PDF writer(itextpdf)<br>
 -[ ] QRcode (use [ZXing](https://github.com/zxing/zxing) )<br>
