@@ -1,4 +1,4 @@
-package tw.com.c10381.toolcollection.CsvTool;
+package tw.com.c10381.toolcollection.csvTool;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,8 +13,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.StringJoiner;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class CsvTool {
 
@@ -65,7 +67,7 @@ public class CsvTool {
         pw.println(sb.toString());
       });
 
-      System.out.println("已成功生成csv檔案於"+ outputPath.toAbsolutePath().toString());
+      log.info("已成功生成csv檔案於"+ outputPath.toAbsolutePath().toString());
     }
   }
 

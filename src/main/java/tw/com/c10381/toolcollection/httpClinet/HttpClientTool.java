@@ -4,7 +4,11 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.springframework.util.ObjectUtils.isEmpty;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -12,22 +16,27 @@ import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpRequest;
 import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
+import java.nio.file.Path;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.StringJoiner;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import tw.com.c10381.toolcollection.jsonTool.JsonTool;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class HttpClientTool {
 
-  private final ObjectMapper objMapper;
   private final JsonTool jsonTool;
   /**
    * Get，without Header
@@ -124,6 +133,39 @@ public class HttpClientTool {
     return sendRequest(request);
   }
 
+  public boolean sendRequestAndGetSingleFile(String url,Path downloadLocation) throws IOException, InterruptedException {
+    var fileStream = sendRequestAndGetFile(url);
+
+    var path = downloadLocation.toAbsolutePath();
+
+    try(var bis = new BufferedInputStream(fileStream); var os = new FileOutputStream(path.toString())){
+      bis.transferTo(os);
+    }catch(Exception e){
+      log.error(e.toString());
+      return false;
+    }
+    return true;
+  }
+
+  public boolean sendRequestAndGetZip(String url,Path downloadLocation) throws IOException, InterruptedException {
+    var fileStream = sendRequestAndGetFile(url);
+
+    try(var bis = new ZipInputStream(fileStream)){
+      ZipEntry entry;
+      int c;
+      while((entry = bis.getNextEntry()) != null){
+        var path = downloadLocation.toAbsolutePath().toString()+"/" + entry.getName();
+        var file = new File(path);
+        try(var os = new FileOutputStream(file)){
+          while((c = bis.read()) != -1) {
+            os.write(c);
+          }
+        }
+      }
+    }
+    return true;
+  }
+
   /**
    * 發送request共用方法
    * @param request
@@ -140,11 +182,33 @@ public class HttpClientTool {
 
     var response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-    System.out.println(response);
     return Optional.ofNullable(response)
         .filter(r -> r.statusCode() == 200)
         .map(HttpResponse::body)
         .orElse("");
+  }
+  /**
+   * 取得檔案共用方法
+   * @param url
+   * @return
+   * @throws IOException
+   * @throws InterruptedException
+   */
+  private InputStream sendRequestAndGetFile(String url) throws IOException, InterruptedException {
+    var client = HttpClient.newBuilder()
+        .connectTimeout(Duration.ofMillis(5000L))
+        .followRedirects(Redirect.NORMAL)
+        .build();
+    var request = HttpRequest.newBuilder()
+        .GET()
+        .uri(URI.create(url))
+        .build();
+
+    var response = client.send(request, HttpResponse.BodyHandlers.ofInputStream());
+    return Optional.ofNullable(response)
+        .filter(r -> r.statusCode() == 200)
+        .map(HttpResponse::body)
+        .orElseThrow(NoSuchElementException::new);
   }
 
   /**
