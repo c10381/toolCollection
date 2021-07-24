@@ -7,32 +7,32 @@
 寫一個自己爽的prototype，並要撰寫Test
 
 ## 預計功能
--[x] csv reader/writer (7/6 Done)<br>
--[x] Json tool -(7/20 Done)<br>
--[x] zip/unZip -(7/24 Done)<br>
--[ ] excel reader/writer(use POI)<br>
--[ ] PDF writer(itextpdf)<br>
--[ ] QRcode (use [ZXing](https://github.com/zxing/zxing) )<br>
+- [x] csv reader/writer (7/6 Done)<br>
+- [x] Json tool -(7/20 Done)<br>
+- [x] zip/unZip -(7/24 Done)<br>
+- [ ] excel reader/writer(use POI)<br>
+- [ ] PDF writer(itextpdf)<br>
+- [ ] QRcode (use [ZXing](https://github.com/zxing/zxing) )<br>
 
 ### 依賴Spring、Mybatis、H2(ProgressSQL mode)、MongoDB
--[x] Spring-boot profile with maven -(7/17 Done)<br>
--[x] HttpClient -(7/20 Done)<br>
--[ ] Swagger<br>
--[ ] document reader/writer<br>
--[ ] Address checker( JSON / MongoDB )<br>
--[ ] Google map API / OpenMap API<br>
--[ ] Cache<br>
--[ ] Spring boot Mails<br>
--[ ] WebSockets<br>
--[ ] Spring Security<br>
+- [x] Spring-boot profile with maven -(7/17 Done)<br>
+- [x] HttpClient -(7/20 Done)<br>
+- [ ] Swagger<br>
+- [ ] document reader/writer<br>
+- [ ] Address checker( JSON / MongoDB )<br>
+- [ ] Google map API / OpenMap API<br>
+- [ ] Cache<br>
+- [ ] Spring boot Mails<br>
+- [ ] WebSockets<br>
+- [ ] Spring Security<br>
 
 ### 待開新專案(micro services)
--[ ] Spring cloud gateway<br>
--[ ] OpenFeign(with Trace)<br>
--[ ] gRPC(with Trace)<br>
+- [ ] Spring cloud gateway<br>
+- [ ] OpenFeign(with Trace)<br>
+- [ ] gRPC(with Trace)<br>
 
 ### Infra
--[x] github action (7/6 Done)<br>
+- [x] github action (7/6 Done)<br>
 
 
 ## 結語
