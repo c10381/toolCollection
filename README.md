@@ -21,6 +21,7 @@
 - [ ] document reader/writer<br>
 - [ ] Address checker( JSON / MongoDB )<br>
 - [ ] Google map API / OpenMap API<br>
+- [x] simpleRedis -(7/27 Done)<br>
 - [ ] Cache<br>
 - [ ] Spring boot Mails<br>
 - [ ] WebSockets<br>
